@@ -1,13 +1,26 @@
+/*
+*Author: Winnie Liang
+*Date: 2/22/16
+*This programming exercise is essentially for network socket programming practic taken from securitytube.net: "HELLO WORLD TCP SERVER USING SOCKETS" part 1 + 2. 
+*Purpose: Make a TCP server that will send a connected Client the string "Hello to the world of socket programming!" and finish servicing the client.
+*Also encountered the most important API call - accept() from server's perspective which allows the server process to accept client connections and process them.
+*Ran the server in infinite loop so that we can process clients one after the other. Since server is NOT multithreaded, we can only process a single client at a time. To be able to process multiple clients asynchronous calls such as select() or multithreading will have to be used. 
+*/
+
+
+
+
 #include<string.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include<sys/types.h> //after typing man socket (for manual)
+#include<sys/types.h> 
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<errno.h>
 #include<arpa/inet.h>
 #include<unistd.h>
 
+//For manual help, type in for example "man socket, man 2 listen, etc" 
 
 int main()
 {
@@ -71,6 +84,10 @@ int main()
 		//CLOSE() -- closes connection to the client
 		close(cli);
 	}
+
+//Create executable on the terminal with gcc helloworld.c -o helloworld then run it by ./helloworld
+//Open another terminal window -- type in "netstat -atp" -- this will list all the connections and clients running
+//Lastly type in "telnet localhost 10000"
 
 
 }
